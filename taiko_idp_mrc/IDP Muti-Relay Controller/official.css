@@ -1,0 +1,98 @@
+<style type="text/css">
+ body {font-family:"Arial";font-size:100%;}
+ input {font-family:"Arial";font-size:100%;}
+ title {font-family:"Arial";font-size:120%;}
+ 
+.input-rounded-button-green {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    padding:9 9px 9 9px;
+    display:inline-block;
+    text-decoration:none;
+    background:#339933;
+
+    color:#FFFFFF;
+    cursor:pointer;
+    font:18px arial;
+    box-shadow:4px 4px 8px #707070;
+}
+
+.input-rounded-button-red {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    padding:9 9px 9 9px;
+    display:inline-block;
+    text-decoration:none;
+    background:#E80000;
+
+    color:#FFFFFF;
+    cursor:pointer;
+    font:18px arial;
+    box-shadow:4px 4px 8px #707070;
+}
+
+.input-rounded-button-white {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    padding:9 9px 9 9px;
+    display:inline-block;
+    text-decoration:none;
+    background:#FFFFFF;
+
+    color:#000000;
+    cursor:pointer;
+    font:18px arial;
+    box-shadow:4px 4px 8px #707070;
+}
+
+.input-rounded-button-whiteX {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF;
+    padding:9 9px 9 9px;
+    display:inline-block;
+    text-decoration:none;
+    background:#FFFFFF;
+
+    color:#000000;
+    cursor:pointer;
+    font:18px arial;
+    box-shadow:4px 4px 8px #707070;
+}
+
+.input-rounded-button-green:hover { 
+    text-decoration:none; 
+    color:#FFFFFF; 
+    cursor:pointer;
+    border:2px solid #FF2B06;
+}
+
+.input-rounded-button-red:hover { 
+    text-decoration:none; 
+    color:#FFFFFF; 
+    cursor:pointer;
+    border:2px solid #FF2B06;
+}
+
+.input-rounded-button-white:hover { 
+    text-decoration:none; 
+    color:#000000; 
+    cursor:pointer;
+    border:2px solid #FF2B06;
+}
+
+.input-rounded-button-whiteX:hover { 
+    text-decoration:none; 
+    color:#000000; 
+    cursor:pointer;
+    border:2px solid #FF2B06;
+}
+
+</style>

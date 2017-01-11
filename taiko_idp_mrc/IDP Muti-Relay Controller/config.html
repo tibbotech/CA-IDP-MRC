@@ -1,0 +1,267 @@
+<?
+	include "global.tbh"
+?>
+
+
+<!DOCTYPE html>
+<html  dir="rtl" lang="heb">
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Windows-1255">
+<META HTTP-EQUIV="Content-language" CONTENT="he"> 
+<meta http-equiv="cache-control" content="private">
+<link rel="stylesheet" type="text/css" href="official.css">
+</head>
+<BODY>
+
+
+<script type="text/javascript">
+var Entry;
+
+	function refreshParent() {
+  window.opener.location.href = "io.html";
+
+  if (window.opener.progressWindow)
+		
+ {
+    window.opener.progressWindow.close()
+  }
+  window.close();
+}
+
+
+
+
+	
+function popup(page_name)
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  var xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+  
+//use random to avoid caching
+xmlhttp.open("GET",page_name);
+
+xmlhttp.send();
+
+alert("הפעולה התבצעה!");
+var backLocation = document.referrer;
+if (backLocation) {
+    if (backLocation.indexOf("?") > -1) {
+        backLocation += "&randomParam=" + new Date().getTime();
+    } else {
+        backLocation += "?randomParam=" + new Date().getTime();
+    }
+    window.location.assign(backLocation);
+}
+}
+
+
+
+</script>
+
+<h1 align="center"> הגדרות כלליות</h1>
+
+<table width="600px" border="5" align='center' CELLPADDING="4" CELLSPACING="3" style="border-radius:12px; border-color:#3071b8">
+  
+  <tr>
+    <td align="center">
+	<?
+	dim show_day_str as string	
+	
+	dim show_day as integer
+	show_day = RTCDays mod 7
+	if show_day=0 then 
+		show_day_str = "שבת" 
+	end if
+	if show_day=1 then 
+		show_day_str = "ראשון" 
+	end if
+	if show_day=2 then 
+		show_day_str = "שני" 
+	end if
+	if show_day=3 then 
+		show_day_str = "שלישי" 
+	end if
+	if show_day=4 then 
+		show_day_str = "רביעי" 
+	end if
+	if show_day=5 then 
+		show_day_str = "חמישי" 
+	end if
+	if show_day=6 then 
+		show_day_str = "שישי" 
+	end if
+	
+	sock.setdata("זמן פנימי - יום:" + show_day_str)
+	sock.send()
+	?>	
+	
+	<?
+	sock.setdata("     שעה:" + time_now)
+	sock.send()
+	
+	
+	?>
+
+	</td></tr>
+
+  <tr>
+    <td>
+<form action="set_clock.html" method="get" align='center'>
+<table align="center"><tr>
+<td align="center">קביעת שעון פנימי:
+<input type='time' name='set_time' id='set_time' ></td>
+<td align="center">
+<select name = "set_day">
+  <option value="sunday">ראשון</option>
+  <option value="monday">שני</option>
+  <option value="tuesday">שלישי</option>
+  <option value="wednesday">רביעי</option>
+  <option value="thursday">חמישי</option>
+  <option value="friday">שישי</option>
+  <option value="satureday">שבת</option>
+</select>
+</td></tr></table>
+<input type="submit" name="clock" value="קביעת שעה ויום" tabindex="2" class="input-rounded-button-green">
+</form>
+
+	</td></tr>
+  <tr>
+    <td>
+
+<form action="set_sms.html" method="get" align='center'>
+<table align="center"><tr>
+<td align="center">קביעת סמס יומי:
+<input type="time" name="set_time" id="set_time"></td>
+<td align="center">
+ערך נוכחי: <? sock.setdata(DailySMSTime)
+				  sock.send?> 
+&nbsp;&nbsp;&nbsp;&nbsp;
+</td></tr></table>
+<input type="submit" name="clock" value="קביעת שעה" tabindex="2" class="input-rounded-button-green">
+</form>
+	</td></tr>
+	  <tr>
+    <td>
+<form action="set_reset.html" method="get" align='center'>
+<table align="center"><tr>
+<td align="center">קביעת איפוס יומי:
+<input type="time" name="set_time" id="set_time"></td>
+<td align="center">
+ערך נוכחי: <? sock.setdata(DailyRS1Time)
+				  sock.send?> 
+&nbsp;&nbsp;&nbsp;&nbsp;
+</td></tr></table>
+<input type="submit" name="clock" value="קביעת שעה" tabindex="2" class="input-rounded-button-green">
+</form>
+	</td></tr>
+  <tr>
+    <td>
+
+
+<center>רשום במילה אחת את שם המקום באותיות עבריות בלבד ללא סימנים וללא רווחים</center>
+
+<form action="save_name.html" align='center'>
+<table align="center"><tr>
+<td align="center">
+שם המקום: <input type="text" name="site_name" lang="heb" value="" style="width: 100px;"></td></tr></table>
+<input type="submit" value="שמור" class="input-rounded-button-green">
+</form>
+
+	</td></tr>
+
+  <tr>
+    <td>
+
+<center>
+תקשורת עם מודם סלולרי:
+<b><i>
+<? 
+	if (modem_str = "Y") then
+		sock.setdata("מודם סלולארי מחובר")		
+	else if (modem_str = "N") then
+		sock.setdata("מודם סלולארי מנותק")
+	else
+		sock.setdata("טרם הוגדר")
+	end if
+	
+	sock.send
+?> 
+</i></b>
+</center>
+<table align="center"><tr>
+<td><button align='center' class="input-rounded-button-green" onclick="popup('connect_modem.html')">חבר מודם סלולרי</button></td>
+<td><button align='center' class="input-rounded-button-red" onclick="popup('disconnect_modem.html')">נתק מודם סלולרי</button></td></tr></table>
+
+</td> </tr> 
+
+	<br>
+  <tr>
+    <td>
+	<center>
+<button align='center' onclick="popup('reset_table.html')" class="input-rounded-button-white">אפס לוח זמנים</button>&nbsp;&nbsp;&nbsp;
+<button align='center' onclick="popup('reset_contr.html')" class="input-rounded-button-white">אפס את כל ההגדרות</button>
+	</center>
+</td> </tr> 
+	<br>
+
+	</td></tr>
+
+ <tr>
+    <td>
+<center>קביעת מספרי הטלפון לשימוש עם המודם</center>
+<br>
+<form action="change_phone.html" align='center'>
+<?
+	num0 = stor.getdata(table1_start+60,10)
+	num1 = stor.getdata(table1_start+70,10)
+	num2 = stor.getdata(table1_start+80,10)
+	num3 = stor.getdata(table1_start+90,10)
+	num4 = stor.getdata(table1_start+100,10)
+?>
+<table align="center">
+	<tr><td>
+ מספר טלפון ראשי: </td><td><input type="text" name="change_phone" lang="heb" value= 
+ <? sock.setdata(num0)
+	sock.send?> style="width: 100px;"></td></tr><tr><td>
+מספר טלפון 1: </td><td><input type="text" name="change_phone1" lang="heb" value= 
+ <? sock.setdata(num1)
+	sock.send?> style="width: 100px;"></td></tr><tr><td>
+מספר טלפון 2: </td><td><input type="text" name="change_phone2" lang="heb" value= 
+ <? sock.setdata(num2)
+	sock.send?> style="width: 100px;"></td></tr><tr><td>
+מספר טלפון 3: </td><td><input type="text" name="change_phone3" lang="heb" value= 
+ <? sock.setdata(num3)
+	sock.send?> style="width: 100px;"></td></tr><tr><td>
+מספר טלפון 4: </td><td><input type="text" name="change_phone4" lang="heb" value=
+ <? sock.setdata(num4)
+	sock.send?> style="width: 100px;"></td></tr>
+	</table>
+<input type="submit" value="שמור" class="input-rounded-button-green">
+</form>	
+</td></tr>
+
+<br>
+<!--
+  <tr>
+    <td>
+
+<button type="button" onclick="javascript:history.go(-2)" class="input-rounded-button-white">חזור</button>
+	</td></tr>
+-->
+</table>
+
+</BODY>
+</HTML>

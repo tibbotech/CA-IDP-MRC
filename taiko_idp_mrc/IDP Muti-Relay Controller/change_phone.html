@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  dir="rtl" lang="heb">
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Windows-1255">
+<META HTTP-EQUIV="Content-language" CONTENT="he"> 
+<meta http-equiv="cache-control" content="private">
+ <style>
+ body {font-family:"Arial";font-size:100%;}
+ input {font-family:"Arial";font-size:100%;}
+ title {font-family:"Arial";font-size:120%;}
+ </style>
+<BODY>
+קביעת מספר טלפון חדש הסתיימה  
+<br>
+
+
+<?
+	include "global.tbh"
+	dim http_req_string as string
+	dim sTEMP as string
+	dim nMSB as byte
+	dim nLSB as byte
+	dim new_phone as string(10)
+
+
+Num0
+			stor.setdata("0000000000", 1900)
+'Num1		
+			stor.setdata("0000000000", 1910)
+'Num2			
+			stor.setdata("0000000000", 1920)
+'Num4			
+			stor.setdata("0000000000", 1930)
+'Num5
+			stor.setdata("0000000000", 1940)
+
+
+	http_req_string = sock.httprqstring
+	new_phone = get_http_argument(http_req_string, "change_phone=")
+	
+	
+	stor.setdata(mid(new_phone,1,10),table1_start+60)
+	num0 = new_phone
+
+	new_phone = get_http_argument(http_req_string, "change_phone1=")
+
+	stor.setdata(mid(new_phone,1,10),table1_start+70)
+	num1 = new_phone
+
+
+	new_phone = get_http_argument(http_req_string, "change_phone2=")
+
+	stor.setdata(mid(new_phone,1,10),table1_start+80)
+	num2 = new_phone
+
+
+	new_phone = get_http_argument(http_req_string, "change_phone3=")
+
+	stor.setdata(mid(new_phone,1,10),table1_start+90)
+	num3 = new_phone
+
+
+	new_phone = get_http_argument(http_req_string, "change_phone4=")
+
+	stor.setdata(mid(new_phone,1,10),table1_start+100)
+	num4 = new_phone
+
+?>	
+	
+<br>
+
+</BODY>
+</HTML>

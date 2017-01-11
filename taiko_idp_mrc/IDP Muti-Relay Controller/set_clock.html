@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html  dir="rtl" lang="heb">
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Windows-1255">
+<META HTTP-EQUIV="Content-language" CONTENT="he"> 
+<meta http-equiv="cache-control" content="private">
+ <style>
+ body {font-family:"Arial";font-size:100%;}
+ input {font-family:"Arial";font-size:100%;}
+ title {font-family:"Arial";font-size:120%;}
+ </style>
+<BODY>
+
+קביעת השעה והיום הסתיימה
+<br>
+
+<button type="button" onclick="javascript:history.go(-2)">חזור</button>
+
+
+<?
+	include "global.tbh"
+	dim http_req_string as string
+	dim read_save as string
+	dim html_line as string
+	dim set_time as string
+	dim set_hour as string
+	dim set_day as string
+	dim set_minute as string
+	dim RTCMinutes as word
+	dim RTCSecs as byte
+
+	http_req_string = sock.httprqstring
+	
+	set_time = get_http_argument(http_req_string, "set_time=")
+	set_hour = mid(set_time,1,2)
+	set_minute = mid(set_time,6,2)
+	set_day = get_http_argument(http_req_string, "set_day=")
+	
+	if set_day = "sunday" then
+		RTCDays = 1
+	end if
+	if set_day = "monday" then
+		RTCDays = 2
+	end if
+	if set_day = "tuesday" then
+		RTCDays = 3
+	end if
+	if set_day = "wednesday" then
+		RTCDays = 4
+	end if
+	if set_day = "thursday" then
+		RTCDays = 5
+	end if
+	if set_day = "friday" then
+		RTCDays = 6
+	end if
+	if set_day = "satureday" then
+		RTCDays = 7
+	end if
+	
+	dim tmp1 as word
+	dim tmp2 as word
+	dim tmp3 as word
+	dim tmp4 as word
+	
+	tmp1 = 10*asc(mid(set_hour,1,1))
+	tmp2 = asc(mid(set_hour,2,1))
+	tmp3 = 10*asc(mid(set_minute,1,1))
+	tmp4 = asc(mid(set_minute,2,1))
+
+	RTCMinutes = ((10*(asc(mid(set_hour,1,1))-48))+ (asc(mid(set_hour,2,1))-48)) * 60 + 10*(asc(mid(set_minute,1,1))-48)+ (asc(mid(set_minute,2,1)))-48
+	
+
+	RTCSecs = 0
+	
+	rtc.setdata(RTCDays,RTCMinutes,RTCSecs)
+?>
+<br>
+
+</BODY>
+</HTML>

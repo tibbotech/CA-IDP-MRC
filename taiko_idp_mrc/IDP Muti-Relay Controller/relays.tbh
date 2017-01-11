@@ -1,0 +1,3 @@
+declare sub open_relay(socket as byte)
+declare sub close_relay(socket as byte)
+declare function status_relay(socket as byte) as boolean

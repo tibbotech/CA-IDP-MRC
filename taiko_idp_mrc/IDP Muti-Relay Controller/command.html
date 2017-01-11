@@ -1,0 +1,12 @@
+
+<?
+	include "global.tbh"	dim tmp as string
+	dim http_req_string as string
+	http_req_string = sock.httprqstring
+	
+	tmp = get_http_argument(http_req_string, "command=")
+	Word_from_PC = tmp
+	main_control()
+
+?>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html  dir="rtl" lang="heb">
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Windows-1255">
+<META HTTP-EQUIV="Content-language" CONTENT="he"> 
+<meta http-equiv="cache-control" content="private">
+ <style>
+ body {font-family:"Arial";font-size:100%;}
+ input {font-family:"Arial";font-size:100%;}
+ title {font-family:"Arial";font-size:120%;}
+ </style>
+<BODY>
+
+
+<script type="text/javascript">
+
+	function refreshParent() {
+  window.opener.location.href = "index.html";
+
+  if (window.opener.progressWindow)
+		
+ {
+    window.opener.progressWindow.close()
+  }
+  window.close();
+}
+	
+
+function popup(page_name)
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  var xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+  
+//use random to avoid caching
+xmlhttp.open("GET",page_name);
+
+xmlhttp.send();
+
+alert("הפעולה התבצעה!");
+
+}
+
+
+
+</script>
+
+
+<br>
+
+
+<?
+	include "global.tbh"
+	dim http_req_string as string
+	dim sTEMP as string
+	dim nMSB as byte
+	dim nLSB as byte
+
+
+	http_req_string = sock.httprqstring
+	site_name = get_http_argument(http_req_string, "site_name=")
+	nPOINTER = &h3d0
+	sTEMP = chr(2) + site_name	'adding header and separator
+
+	stor.setdata(sTEMP, nPOINTER)			'saved the record into the EPROM, the record is placed after the current POINTER, and POINTER will 
+	nPOINTER = nPOINTER + len(sTEMP) 
+	nMSB = nPOINTER/256					'convert POINTER from worde to the 2 bytes, the most significant byte and least significant byte
+	nLSB = nPOINTER-nMSB*256
+	sPOINTER = chr(nMSB)+chr(nLSB)		'convert POINTER from bytes, to string
+	stor.Setdata(sPOINTER,&h3fa)		'stored POINTER to EPROM	
+
+?>	
+	
+<br>
+
+</BODY>
+</HTML>

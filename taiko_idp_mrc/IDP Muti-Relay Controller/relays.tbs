@@ -1,0 +1,17 @@
+sub open_relay(socket as byte)
+	io.num=socket
+	io.enabled=YES
+	io.state=Low
+end sub
+sub close_relay(socket as byte)
+	io.num=socket
+	io.enabled=YES
+	io.state=High
+end sub
+function status_relay(socket as byte) as boolean
+	io.num=socket	
+	if ((io.state=LOW) and (io.enabled=YES)) then
+		status_relay = true
+		else status_relay = false
+	end if	
+end function

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html  dir="rtl" lang="heb">
+
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Windows-1255">
+<META HTTP-EQUIV="Content-language" CONTENT="he"> 
+<meta http-equiv="cache-control" content="private">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE">
+
+ <style>
+ body {font-family:"Arial";font-size:100%;}
+ input {font-family:"Arial";font-size:100%;}
+ title {font-family:"Arial";font-size:120%;}
+ </style>
+ 
+</head>
+
+
+
+
+
+<script type="text/javascript">
+
+var timepicker;
+var read_time;
+var flag;
+var Entry;
+
+function changeImage1() {
+		element=document.getElementById('myimage')
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+			xmlhttp.onreadystatechange=function()   {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {				
+				var s=xmlhttp.responseText;
+					element.src="pic_bulboff.gif";	
+				}
+		}
+
+		//use random to avoid caching
+		xmlhttp.open("GET","command.html?command=" + "Cls" + Math.random(),true);
+		xmlhttp.send();
+	}
+
+function changeImage2() {
+		element=document.getElementById('myimage')
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+			xmlhttp.onreadystatechange=function()   {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {				
+					element.src="pic_bulbon.gif";	
+				}
+		}
+
+		//use random to avoid caching
+		xmlhttp.open("GET","command.html?command=" + "Opn" + Math.random(),true);
+		xmlhttp.send();
+	}
+
+
+function ReadImage() {
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			xmlhttp.onreadystatechange=function()   {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {				
+					var s =  xmlhttp.responseText;
+				if(s==1) {
+					element=document.getElementById('myimage');
+					element.src="pic_bulbon.gif";	
+			
+					} else {
+					element=document.getElementById('myimage');
+					element.src="pic_bulboff.gif";	
+				
+					}					
+				}
+		}
+
+		//use random to avoid caching
+		xmlhttp.open("GET","command.html?command=" + "RIH31" + Math.random(),true);
+		xmlhttp.send();
+	}
+
+
+
+function ReadTime(id) {
+		var s;
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			xmlhttp.onreadystatechange=function()   {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {				
+					s =  xmlhttp.responseText;
+					var test = document.getElementById(id);
+					test.value = s;
+					
+				}
+		}
+		var Entry;
+		if (id=='sunday_start1') {Entry="00"};
+		if (id=='sunday_end1') {Entry="01"};
+		if (id=='monday_start1') {Entry="02"};
+		if (id=='monday_end1') {Entry="03"};
+		if (id=='tuesday_start1') {Entry="04"};
+		if (id=='tuesday_end1') {Entry="05"};
+		if (id=='wednesday_start1') {Entry="06"};
+		if (id=='wednesday_end1') {Entry="07"};
+		if (id=='thursday_start1') {Entry="08"};
+		if (id=='thursday_end1') {Entry="09"};
+		if (id=='friday_start1') {Entry="10"};
+		if (id=='friday_end1') {Entry="11"};
+		if (id=='satureday_start1') {Entry="12"};
+		if (id=='satureday_end1') {Entry="13"};
+		if (id=='sunday_start2') {Entry="14"};
+		if (id=='sunday_end2') {Entry="15"};
+		if (id=='monday_start2') {Entry="16"};
+		if (id=='monday_end2') {Entry="17"};
+		if (id=='tuesday_start2') {Entry="18"};
+		if (id=='tuesday_end2') {Entry="19"};
+		if (id=='wednesday_start2') {Entry="20"};
+		if (id=='wednesday_end2') {Entry="21"};
+		if (id=='thursday_start2') {Entry="22"};
+		if (id=='thursday_end2') {Entry="23"};
+		if (id=='friday_start2') {Entry="24"};
+		if (id=='friday_end2') {Entry="25"};
+		if (id=='satureday_start2') {Entry="26"};
+		if (id=='satureday_end2') {Entry="27"};
+		
+		//use random to avoid caching
+
+		temp = Math.random();
+		xmlhttp.open("GET","command.html?command=" + "RIH" + Entry + temp.toFixed(3),true);
+		xmlhttp.send();
+		
+
+	}
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+
+
+
+//========================================
+
+function ReadTime_All_New() {
+
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			xmlhttp.onreadystatechange=function()   {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {				
+					var s =  xmlhttp.responseText;
+					
+					var test = document.getElementById('sunday_start1');
+					test.value = s.substring(2,6);
+					test = document.getElementById('sunday_end1');
+					test.value = s.substring(6,10);					
+					test = document.getElementById('monday_start1');
+					test.value = s.substring(10,14);					
+					test = document.getElementById('monday_end1');
+					test.value = s.substring(14,18);					
+					test = document.getElementById('tuesday_start1');
+					test.value = s.substring(18,22);					
+					test = document.getElementById('tuesday_end1');
+					test.value = s.substring(22,26);					
+					test = document.getElementById('wednesday_start1');
+					test.value = s.substring(26,30);					
+					test = document.getElementById('wednesday_end1');
+					test.value = s.substring(30,34);					
+					test = document.getElementById('thursday_start1');
+					test.value = s.substring(34,38);					
+					test = document.getElementById('thursday_end1');
+					test.value = s.substring(38,42);					
+					test = document.getElementById('friday_start1');
+					test.value = s.substring(42,46);					
+					test = document.getElementById('friday_end1');
+					test.value = s.substring(46,50);					
+					test = document.getElementById('satureday_start1');
+					test.value = s.substring(50,54);					
+					test = document.getElementById('satureday_end1');
+					test.value = s.substring(54,58);					
+
+					}
+		}
+
+		xmlhttp.open("GET","command.html?command=" + "RAN" + Math.random(),true);
+		xmlhttp.send();
+		
+
+	}
+
+
+
+//========================================
+
+
+
+
+
+
+
+function ReadTime_All() {
+
+ReadTime('sunday_start1');
+sleep(400);
+ReadTime('sunday_end1');
+sleep(400);
+ReadTime('monday_start1');
+sleep(400);
+ReadTime('monday_end1');
+sleep(400);
+ReadTime('tuesday_start1');
+sleep(400);
+ReadTime('tuesday_end1');
+sleep(400);
+ReadTime('wednesday_start1');
+sleep(400);
+ReadTime('wednesday_end1');
+sleep(400);
+ReadTime('thursday_start1');
+sleep(400);
+ReadTime('thursday_end1');
+sleep(400);
+ReadTime('friday_start1');
+sleep(400);
+ReadTime('friday_end1');
+sleep(400);
+ReadTime('satureday_start1');
+sleep(400);
+ReadTime('satureday_end1');
+}
+
+
+function WriteEntry(name,id) {
+		
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			xmlhttp.onreadystatechange=function()   {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {				
+				var button = document.getElementById(id);
+					button.value = timepicker;									
+				}
+		}
+
+		Entry = name
+		
+		xmlhttp.open("GET","command.html?command=" + "Ute" + Entry + timepicker + Math.random(),true);
+		xmlhttp.send();
+
+	}
+
+
+
+
+function ftime(){
+timepicker = document.getElementById('time_val').value;
+}
+
+
+</script>
+
+
+
+
+<?
+'this one typical use of our dynamic web page, the user can open this web page without correct password
+'but the content will not be shown without correct password.
+
+	include "global.tbh"
+
+	dim http_req_string as string
+	dim password as string
+	dim username as string
+	dim login_enabled as integer
+
+	http_req_string = sock.httprqstring
+	username = get_http_argument (http_req_string, "username=")  
+	password = get_http_argument(http_req_string, "password=")
+	if (username="idp" and password="5617395") then
+	login_enabled=1
+	else
+	  sock.setdata("Wrong password. Try again <!--")
+	  sock.send()
+	end if
+
+	
+?>
+
+
+
+<body>
+
+<table border="0" align='center' width='100%'>
+	<tr>
+		<td width='50%' align='left'>Version: 9.9.2014</td>
+	</tr>
+</table>
+
+
+<form action="config.html" method="get">
+<input type="submit" value="הגדרות">
+</form>
+
+
+</h1>
+
+<h1 align='center'> בקרת תאורה
+
+	<?
+	  
+      dim site_name1 as string
+	  dim nMSB as byte				'nMSB, and nLSB are the most signficant byte, and least signficant byte of the EPROM memory pointer.
+	  dim nLSB as byte				
+	  dim sTEMP as string				'before each record is saved from EPROM, the record will be placed into sTEMP first
+	  dim nPOS1 as word
+	  dim i as integer
+	  site_name1 = ""
+	  
+	  sPOINTER = stor.getdata(&h3fa,2)		'read the POINTER from EPROM
+	  nPOINTER = asc(mid(sPOINTER,1,1))*256+asc(mid(sPOINTER,2,1))		'convert POINTER from string to word 
+	  if nPOINTER > &h3d0 then
+		do while instr(1,sTEMP,chr(2),1) < 1 and nPOINTER > &h3d0
+		nPOINTER = nPOINTER - 1
+		sTEMP = stor.getdata(nPOINTER,1) + sTEMP
+		loop
+		
+		dim s as string(1)
+		dim b1 as byte
+		dim b2 as byte
+		dim s1 as string(1)
+		dim b11 as byte
+		dim b12 as byte
+		dim b as byte
+		
+		nPOS1 = len(sTEMP)	
+		for i = 3 to nPOS1 - 1 
+			s = mid(sTEMP,i,1)
+			b1 = asc(mid(sTEMP,i,1))
+			if b1> &h39 then
+				b2 = b1 - 55
+			 else 
+				b2 = b1 - 48
+			end if
+			s1 = mid(sTEMP,i+1,1)
+			b11 = asc(mid(sTEMP,i+1,1))
+			if b11> &h39 then
+				b12 = b11 - 55
+			 else 
+				b12 = b11 - 48
+			end if
+			b = b2*16 + b12
+			site_name1 = site_name1 + chr(b)
+			i = i+2
+		next i 
+	  end if
+	  sock.setdata("- " + site_name1)
+	  sock.send()
+	?>
+
+
+</h1>
+
+<form align='center' id='relayForm'>
+<table border="0" align='center'>
+<tr>
+<td>
+<input id='relayValue1' type="button"  onclick='changeImage2()' name='RL1' value='הדלק' style="width: 200px; height: 60px; background-color: green ;border: 5px solid #000000; font-size:300%">
+<input id='relayValue3' type='hidden' name='RL2' value='3'><img id="myimage" src="pic_bulboff.gif" width="100" height="180">	
+<input id='relayValue1' type="button"  onclick='changeImage1()' name='RL1' value='כבה' style="width: 200px; height: 60px ; background-color: red ; border: 5px solid #000000; font-size:300%" >
+</td>
+</tr>
+<tr>
+<td>
+<input type="button" id='relayValue4' onclick='ReadImage()' type='hidden' name='RL4' value='לחץ לקריאת מצב המנורה הנוכחי' style="width: 500px; height: 60px; background-color: azure ; border: 5px solid #000000; font-size:300%">
+
+</tr>
+</td>
+</table>
+</form>
+
+<br>
+
+<form id='schedule'>
+<table border="0" align='center'>
+  <tr>
+    <th>יום בשבוע</th>
+    <th>1-הפעלה</th>
+	<th>1-כיבוי</th>
+  </tr>
+  <tr>
+    <td>יום א</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='00' id='sunday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='01' id='sunday_end1' form='schedule'/></td>
+ </tr>
+  <tr>
+    <td>יום ב</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='02' id='monday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='03' id='monday_end1' form='schedule'/></td>
+  </tr>
+  <tr>
+    <td>יום ג</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='04' id='tuesday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='05' id='tuesday_end1' form='schedule'/></td>
+  </tr>
+    <tr>
+    <td>יום ד</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='06' id='wednesday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='07' id='wednesday_end1' form='schedule'/></td>
+  </tr>
+    <tr>
+    <td>יום ה</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='08' id='thursday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='09' id='thursday_end1' form='schedule'/></td>
+  </tr>
+  <tr>
+    <td>יום ו</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='10' id='friday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='11' id='friday_end1' form='schedule'/></td>
+  </tr>
+ <tr>
+    <td>יום שבת</td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='12' id='satureday_start1' form='schedule'/></td>
+	<td><input type="button" style="width: 100px; height: 50px; background-color: white ;border: 5px solid #000000; font-size:100%" onclick= 'WriteEntry(name,id)'  name='13' id='satureday_end1' form='schedule'/></td>
+  </tr>  
+  
+</table>
+
+
+
+<table border="0" align='center'>
+  <tr>
+<td>
+<input type="button" id='readtime' onclick='ReadTime_All_New()' type='hidden' name='RT1' value='קריאת זמנים מהבקר' style="width: 500px; height: 60px; background-color: azure ; border: 5px solid #000000; font-size:300%">
+</td>
+</tr>
+</table>
+
+
+
+
+<table border="0" align='center'>
+ <tr>
+<td>
+<input type="time" id="time_val" onclick= 'ftime()' style="height: 60px; background-color: yellow ; border: 5px solid #000000; font-size:300%">
+</td>
+</tr>
+</table>
+
+
+</form>
+<br>
+
+
+
+<hr>
+<p align='center'>לשירות ומכירה פנה לחברת אי.די.פי מוצרי זיהוי אלקטרוניים בע"מ בטלפון 03-5617395  <a target='_blank' href='http://www.idp.co.il'>www.idp.co.il</a></p>
+</body>
+</html>
