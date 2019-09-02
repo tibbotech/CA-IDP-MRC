@@ -37,7 +37,7 @@ public dim modem_str as string(1)
 dim prev_login_mode as cmd_modes
 
 #if WLN_AVAILABLE 
-	public dim wln_rescan_tmr as byte
+'	public dim wln_rescan_tmr as byte
 	public dim wln_want_to_change_ap as no_yes
 	public dim wln_rescanning as no_yes
 	public dim rssi_update_timer as byte
@@ -2829,7 +2829,12 @@ sub init_device_app()
 	dim temp as String
 	ser.num=0
 	
+end sub
+
+sub callback_agg_firmware_upload_progress(total_size as dword, remain_size as dword)
 	
+end sub
 
-
+sub callback_wln_rescan_for_better_ap()
+	
 end sub
